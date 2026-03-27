@@ -284,7 +284,13 @@
         }
         const feedback = getFeedback(raw);
         feedbackText.innerHTML = feedback;
-        alert("✨ 答案已更新！\n\n" + feedback);
+
+    // 高亮闪烁
+    const feedbackBox = document.getElementById("feedbackBox");
+    feedbackBox.classList.remove("feedback-highlight");
+    setTimeout(() => {
+        feedbackBox.classList.add("feedback-highlight");
+        }, 10);
     });
 
     // 回车键支持
