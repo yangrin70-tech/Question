@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>如果我来设计于阗钱币 | 和田马钱互动展览</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: linear-gradient(135deg, #2c5a3a 0%, #1e3a2a 100%);
+            font-family: system-ui, -apple-system, 'Segoe UI', 'Noto Sans', 'Noto Serif SC', serif;
+            min-height: 100vh;
+            padding: 24px 16px 48px;
+        }
+
+        /* 主卡片 */
+        .coin-card {
+            max-width: 680px;
+            margin: 0 auto;
+            background: #fffaf0;
+            background-image: radial-gradient(circle at 10% 20%, rgba(200, 170, 120, 0.08) 2%, transparent 2.5%);
+            background-size: 32px 32px;
+            border-radius: 56px;
+            box-shadow: 0 25px 40px rgba(0, 0, 0, 0.3), 0 4px 12px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            padding-bottom: 32px;
+        }
+
+        /* 头部装饰 */
+        .hero {
+            background: #2f2a22;
+            padding: 28px 20px 20px;
+            text-align: center;
+            border-bottom: 4px solid #e2bc7c;
+        }
+
+        .hero h1 {
+            font-size: 1.9rem;
+            color: #fae67a;
+            letter-spacing: 2px;
+            font-weight: 500;
+        }
+
+        .hero p {
+            color: #e6cf9e;
+            margin-top: 8px;
+            font-size: 0.9rem;
+        }
+
+        /* 互动区 */
+        .interact-area {
+            padding: 28px 24px 16px;
+        }
+
+        .question {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: #4c351c;
+            text-align: center;
+            margin-bottom: 20px;
+            line-height: 1.4;
+        }
+
+        .input-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-bottom: 20px;
+            justify-content: center;
+        }
+
+        .dream-input {
+            flex: 2;
+            min-width: 180px;
+            padding: 14px 20px;
+            font-size: 1rem;
+            border: 2px solid #ddc7a2;
+            border-radius: 60px;
+            background: white;
+            font-family: inherit;
+            outline: none;
+            transition: 0.2s;
+            text-align: center;
+        }
+
+        .dream-input:focus {
+            border-color: #c29a5e;
+            box-shadow: 0 0 0 3px rgba(194, 154, 94, 0.2);
+        }
+
+        .submit-btn {
+            background: #b88b4a;
+            border: none;
+            padding: 12px 28px;
+            border-radius: 48px;
+            font-size: 1rem;
+            font-weight: 600;
+            color: white;
+            cursor: pointer;
+            transition: 0.1s;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+        }
+
+        .submit-btn:active {
+            transform: scale(0.96);
+            background: #9a6e38;
+        }
+
+        /* 反馈卡片 */
+        .feedback {
+            background: #fef4e4;
+            border-radius: 36px;
+            padding: 20px 22px;
+            margin-top: 18px;
+            border-left: 8px solid #e2b87a;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        }
+
+        .feedback-title {
+            font-weight: 700;
+            font-size: 1rem;
+            color: #b46f2e;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .feedback-text {
+            font-size: 1rem;
+            line-height: 1.55;
+            color: #2f241b;
+        }
+
+        .hint {
+            background: #ece1cf;
+            margin: 16px 24px 0 24px;
+            padding: 14px 20px;
+            border-radius: 48px;
+            font-size: 0.85rem;
+            color: #7e623f;
+            text-align: center;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 24px;
+            font-size: 0.7rem;
+            color: #b69263;
+        }
+
+         .top-bar {
+            background: #b88b4a;
+            height: 8px;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+
+<div class="coin-card">
+    <div class="top-bar"></div>
+   
+    <div class="interact-area">
+        <div class="question">
+            📜 如果让你设计一枚于阗钱币，<br>你会把什么印在上面？
+        </div>
+        <div class="input-group">
+            <input type="text" class="dream-input" id="userIdea" placeholder="比如：马、骆驼、狮子、我自己、星星…" autocomplete="off">
+            <button class="submit-btn" id="submitBtn">提交</button>
+        </div>
+
+        <div class="feedback" id="feedbackBox">
+            <div class="feedback-title">
+                <span>🏷️ 丝路回音</span>
+            </div>
+            <div class="feedback-text" id="feedbackText">
+                输入你想印的图案，点击按钮，<br>看看历史上是否有人真的这样做过。
+            </div>
+        </div>
+    </div>
+
+    <div class="hint">
+        💡 小提示 · 于阗人选了马和骆驼。<br>
+        你也可以选别的——说不定历史上真的有人印过！
+    </div>
+    <div class="input-group">
+            <input type="text" class="dream-input" id="userIdea" placeholder="比如：马、骆驼、狮子、我自己、星星…" autocomplete="off">
+            <button class="submit-btn" id="submitBtn">提交</button>
+        </div>
+
+        <div class="feedback" id="feedbackBox">
+            <div class="feedback-title">
+                <span>🏷️ 丝路回音</span>
+            </div>
+            <div class="feedback-text" id="feedbackText">
+                输入你想印的图案，点击按钮，<br>看看历史上是否有人真的这样做过。
+            </div>
+        </div>
+    </div>
+
+    <div class="hint">
+        💡 小提示 · 于阗人选了马和骆驼。<br>
+        你也可以选别的——说不定历史上真的有人印过！
+    </div>
+    <div class="footer">
+        🐎 和田马钱 · 丝路双语展览
+    </div>
+</div>
+
+<script>
+    // ---------- 反馈库（基于你提供的预设）----------
+    const feedbackMap = new Map();
+
+    // 动物类
+    feedbackMap.set("马", "于阗人选了马。大马钱上的马呈走势，小马钱上的马呈立势。在塞种人的传统中，马是献给神灵的牺牲，也是国王权力的象征。");
+    feedbackMap.set("骆驼", "于阗人也选了骆驼。骆驼是丝路商队的“移动动脉”，没有它，就没有穿越沙漠的贸易。在丹丹乌里克的木板画上，甚至有一位骑骆驼的神祇，被称为“驼神”。");
+    feedbackMap.set("狮子", "好眼光！贵霜帝国的钱币上就有狮子。贵霜国王自称“王中之王”，狮子是力量和王权的象征。于阗紧邻贵霜，一定见过这种钱币。");
+    feedbackMap.set("大象", "有趣！印度孔雀王朝的钱币上就印过大象。大象在佛教中也是神圣的动物，白象更是佛陀入胎的象征。于阗作为佛教王国，可能也见过这种设计。");
+    feedbackMap.set("公牛", "公牛出现在很多古老文明的钱币上。在印度河流域，公牛是权力的象征；在古希腊，宙斯就曾化身公牛。于阗作为丝路枢纽，可能见过各地来的钱币。");
+    feedbackMap.set("鹰", "雄鹰是草原民族的传统图腾。斯基泰人的金器上常见鹰的形象，于阗人的祖先就是斯基泰人，鹰对他们来说并不陌生。");
+    feedbackMap.set("鹿", "优雅的选择。斯基泰艺术中常见奔跑的鹿，尤其是西伯利亚巴泽雷克墓葬中出土的鹿纹挂毯，非常精美。于阗人可能也熟悉这个形象。");
+    feedbackMap.set("龙", "龙是中原王朝的图腾。汉代的五铢钱上虽然没有龙，但秦汉瓦当、铜镜上龙纹常见。于阗与汉朝来往密切，一定见过龙的形象。");
+    feedbackMap.set("羊", "在古希腊，绵羊是早期钱币上的常见图案。在斯基泰文化中，羊也是重要的牲畜。于阗作为畜牧与农业并重的绿洲，羊是日常生活的核心。");
+    feedbackMap.set("兔子", "吐鲁番阿斯塔那墓出土过唐代的兔子陶俑，说明西域人对兔子并不陌生。但兔子很少出现在钱币上——也许是因为它不够“威猛”？");
+
+    // 人物类
+    feedbackMap.set("我自己", "好想法！古代很多统治者确实把头像印在钱币上。亚历山大大帝的钱币上有他自己的侧脸，贵霜的迦腻色伽一世也把自己的像印在钱币上，身着长袍，手持长矛，面向火坛献祭。");
+    feedbackMap.set("我的脸", "好想法！古代很多统治者确实把头像印在钱币上。亚历山大大帝的钱币上有他自己的侧脸，贵霜的迦腻色伽一世也把自己的像印在钱币上。");
+    feedbackMap.set("我的头像", "好想法！古代很多统治者确实把头像印在钱币上。亚历山大大帝、贵霜国王都这样做过。");
+    feedbackMap.set("国王", "于阗国王没有把自己的像印在钱币上，但他们的名字留在了钱币上——佉卢文铭文记录的就是于阗王的称号，比如“大王，王中之王，矩伽罗摩耶娑”。");
+    feedbackMap.set("于阗王", "于阗国王没有把自己的像印在钱币上，但他们的名字留在了钱币上的佉卢文铭文里。");
+    feedbackMap.set("菩萨", "佛教在于阗非常兴盛，但钱币上并没有出现佛像。不过，贵霜帝国的钱币上出现过佛陀的形象——迦腻色伽一世时期的钱币背面，就铸有站立的佛陀。这是佛像出现在钱币上的最早例证之一。");
+    feedbackMap.set("佛", "贵霜帝国的钱币上出现过佛陀的形象——迦腻色伽一世时期的钱币背面，就铸有站立的佛陀。这是佛像出现在钱币上的最早例证之一。");
+    feedbackMap.set("飞天", "飞天是佛教艺术中的常见形象，在克孜尔石窟、敦煌壁画中都能看到。但钱币上很少出现飞天——也许是因为钱币太小，画不下飞天的飘带？");
+    feedbackMap.set("武士", "斯基泰人是著名的战士民族，他们的金器上常有武士形象。贵霜钱币上也出现过国王持矛的武士形象。于阗作为斯基泰后裔建立的王国，武士形象对他们来说并不陌生。");
+
+    // 食物类
+    feedbackMap.set("葡萄", "好想法！于阗是丝路上的“果园”，葡萄、石榴、甜瓜都很有名。吐鲁番出土过唐代的葡萄纹铜镜，说明西域人对水果的喜爱。但水果很少出现在钱币上——也许是因为水果有季节，而钱币要常年流通？");
+    feedbackMap.set("石榴", "好想法！于阗是丝路上的“果园”，葡萄、石榴、甜瓜都很有名。但水果很少出现在钱币上。");
+    feedbackMap.set("瓜果", "好想法！于阗是丝路上的“果园”，瓜果飘香。但水果很少出现在钱币上——也许是因为水果有季节，而钱币要常年流通？");
+    feedbackMap.set("麦穗", "古希腊城邦的银币上就有麦穗图案，比如雅典的“猫头鹰银币”背面就是一束橄榄枝和麦穗。于阗作为绿洲农业区，谷物是立国之本，麦穗其实是很有道理的选项。");
+    feedbackMap.set("谷物", "古希腊城邦的银币上就有麦穗图案。于阗作为绿洲农业区，谷物是立国之本。");
+    feedbackMap.set("玉石", "太合理了！于阗就是“玉石之乡”，和田玉名扬天下。但于阗人没有把玉石印在钱币上。有趣的是，中原的玉璧倒是被铸成了钱币的样子——王莽时期的“货泉”就模仿了玉璧的形制。");
+
+    // 器物类
+    feedbackMap.set("车轮", "有意思！古希腊的钱币上就有车轮图案。车轮象征着运动、贸易、旅行，和丝绸之路的精神很契合。");
+    feedbackMap.set("马车", "有意思！古希腊的钱币上就有车轮、马车图案，象征运动与贸易。");
+    feedbackMap.set("宝座", "好想法！贵霜钱币背面常有国王坐像，坐在宝座上的神像也不少见。宝座是权力的象征，如果印在钱币上，等于在说“这是王国的钱”。");
+    feedbackMap.set("王座", "贵霜钱币背面常有国王坐像，宝座是权力的象征。");
+    feedbackMap.set("佛塔", "佛塔是佛教的象征。于阗是佛教王国，境内有很多佛塔。但钱币上确实没有出现过佛塔——也许是因为钱币太小，塔的细节刻不出来？");
+    feedbackMap.set("窣堵波", "佛塔（窣堵波）是佛教的象征，但钱币上很少出现。");
+
+    // 其他创意
+    feedbackMap.set("星星", "好想法！古代很多文明都崇拜日月星辰。斯基泰人的金器上就有日月图案，粟特人的钱币上也有星月纹。于阗作为丝路枢纽，肯定见过这些设计。");
+    feedbackMap.set("月亮", "好想法！粟特人的钱币上常见星月纹，斯基泰金器上也有日月图案。");
+    feedbackMap.set("太阳", "好想法！古代很多文明都崇拜太阳。斯基泰人的金器上就有太阳图案。");
+    feedbackMap.set("眼睛", "有意思！地中海地区有一种“眼睛碗”，碗底画一只眼睛，据说可以辟邪。中亚地区也有“眼纹”护身符的传统。如果印在钱币上，可能是为了“看好”钱袋？");
+    feedbackMap.set("手印", "好想法！印度文化中有“手印”的传统，佛教造像中也常见手印。但钱币上印手印的很少见。");
+    feedbackMap.set("迷宫", "好眼光！古希腊克诺索斯的银币上就有迷宫图案，源于米诺陶洛斯的传说。这种图案后来传到了中亚，贵霜钱币上也有螺旋纹装饰。");
+    feedbackMap.set("螺旋纹", "好眼光！古希腊克诺索斯的银币上就有迷宫图案，贵霜钱币上也有螺旋纹装饰。");
+    feedbackMap.set("文字", "极简主义！中国早期的钱币确实只有文字，没有图案。比如秦半两、汉五铢，都是只写字。于阗钱币上也有汉字和佉卢文，但于阗人还是加上了动物图案——可能为了好看，也可能为了不识字的人也能认。");
+    feedbackMap.set("空白", "那就没人知道这是哪国的钱了。商队路过可能不会收。");
+    feedbackMap.set("不知道", "没关系。于阗人替你选了——他们选了马和骆驼。");
+    feedbackMap.set("烤包子", "诚实的选择！但钱币是拿来花的，不是拿来吃的。 ;-) 不过，于阗确实是丝路上的美食驿站，商队路过都会补充干粮。");
+    feedbackMap.set("馕", "诚实的选择！但钱币是拿来花的，不是拿来吃的。于阗确实是丝路上的美食驿站。");
+    feedbackMap.set("羊肉串", "诚实的选择！但钱币是拿来花的，不是拿来吃的。");
+
+    // 通用兜底
+    const defaultMsg = "这是个有趣的想法！古代世界有很多千奇百怪的钱币——有人印过乌龟、蜜蜂、海豚，甚至印过一只大蚊子。于阗人最终选了马和骆驼，也许是因为它们刚好代表了丝路上最重要的两样东西：力量和远行。";
+
+    // 辅助：匹配关键词（优先长词匹配）
+    function getFeedback(input) {
+        let trimmed = input.trim();
+        if (trimmed === "") return "✨ 在空白处填上你的想法吧——马、骆驼、星星、或者你自己，都可以。";
+
+        // 直接匹配预设词
+        if (feedbackMap.has(trimmed)) {
+            return feedbackMap.get(trimmed);
+        }
+
+        // 模糊匹配（包含关键词）
+        for (let [key, value] of feedbackMap.entries()) {
+            if (trimmed.includes(key)) {
+                return value;
+            }
+        }
+        return defaultMsg;
+    }
+
+    // 绑定按钮事件
+    const submitBtn = document.getElementById("submitBtn");
+    const userInput = document.getElementById("userIdea");
+    const feedbackText = document.getElementById("feedbackText");
+
+    submitBtn.addEventListener("click", () => {
+        let raw = userInput.value;
+        if (!raw) {
+            feedbackText.innerHTML = "✏️ 先在框里写下你想印的图案吧～ 比如：狮子、我自己、星星……";
+            return;
+        }
+        const feedback = getFeedback(raw);
+        feedbackText.innerHTML = feedback;
+        updateCoinEmoji(raw);
+    });
+
+    // 回车键支持
+    userInput.addEventListener("keypress", (e) => {
+        if (e.key === "Enter") {
+            e.preventDefault();
+            submitBtn.click();
+        }
+    });
+</script>
+</body>
+</html>
