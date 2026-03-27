@@ -171,7 +171,7 @@
             📜 如果让你设计钱币图案，<br>你会把什么印在上面？
         </div>
         <div class="input-group">
-            <input type="text" class="dream-input" id="userIdea" placeholder="比如：马、骆驼、狮子、我自己、星星…" autocomplete="off">
+            <input type="text" class="dream-input" id="userIdea" placeholder="比如：狮子、我自己、星星…" autocomplete="off">
             <button class="submit-btn" id="submitBtn">提交</button>
         </div>
 
@@ -284,6 +284,7 @@
         }
         const feedback = getFeedback(raw);
         feedbackText.innerHTML = feedback;
+        alert("✨ 答案已更新！\n\n" + feedback);
     });
 
     // 回车键支持
